@@ -10,13 +10,18 @@ Purpose
 
 Heading Contract
 
-- No H1 in `.prompt.md` files. First header must be: `## Slash Command: /<stem> - <label>`; subsequent headers are `###` or lower.
+- Place a path marker comment immediately after front-matter:
+  `<!-- memory-bank/prompts/<stem>.prompt.md -->`, followed by exactly one blank line.
+- Begin the body with a single `#` H1 title that names the card.
+- The next required section is `## Slash Command: /<stem> - <label>`.
+- Subsequent headers are `###` or lower. Use only relative links; no external URLs.
 
 Authoring Procedure
 
 - Path: `memory-bank/prompts/<stem>.prompt.md`.
-- Front-matter: `description`, optional `mode: ask | edit | agent` (default agent), and optional `model`/`tools` that do not contradict the selected mode.
-- Body: one-paragraph operational state; `### Inputs`, `### Steps`, `### Outputs`; use relative links.
+- Front-matter: required `description`; optional `mode: ask | edit | agent` (default agent), and optional `model`/`tools` that do not contradict the selected mode. Preserve existing optional keys.
+- After the H1, include 1–2 short paragraphs that clearly describe the task and explicitly state the agent’s assumed mode/state for this card.
+- Body must then include `## Slash Command: /<stem> - <label>` followed by sections: `### Inputs`, `### Steps`, `### Outputs`. Use only relative links.
 
 Verify & Bootstrap
 
@@ -24,4 +29,7 @@ Verify & Bootstrap
 
 Review Gate
 
-- Heading contract satisfied; no H1. No contradictions with the selected mode. Relative links only; outputs explicit.
+- Path marker comment present and matches filename; exactly one blank line before the H1 title.
+- H1 present, followed by 1–2 intro paragraphs describing task and agent state.
+- First H2 is the Slash Command heading. Subsequent sections include Inputs, Steps, and Outputs.
+- Relative links only; outputs explicit; no external URLs.

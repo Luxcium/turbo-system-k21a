@@ -3,6 +3,17 @@ description: Idempotent bootstrap/repair for Genesis Layers 1–3 (3A/3B/3C) usi
 tools: ['codebase', 'fetch', 'getTerminalOutput', 'terminalSelection', 'terminalLastCommand', 'edit', 'runTasks', 'think', 'todos']
 ---
 
+<!-- memory-bank/prompts/bootstrap-genesis.prompt.md -->
+
+# Bootstrap Genesis
+
+This card activates “Genesis Bootstrap Mode” to initialize or repair Layers 1–3 idempotently using
+only local instructions and validators. The agent operates additively: create what’s missing,
+never overwrite existing files unless explicitly instructed, and summarize results clearly.
+
+Use this when you want to bring a folder into compliance with the Genesis foundation and triad
+factories (3A/3B/3C), leveraging validator scripts for verification.
+
 ## Slash Command: /bootstrap-genesis - Initialize or Repair Layers 1–3
 
 Operational State

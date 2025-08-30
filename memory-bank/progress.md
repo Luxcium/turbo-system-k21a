@@ -18,3 +18,9 @@ Session Debrief (2025-08-29)
 - Triad index and health scripts created; validators all pass.
 - Ready to scale by adding prompts and automation shortcuts.
 - Copilot protocol imported; co-agent guardrails established; checkpoints enforced per session.
+
+Session Debrief (2025-08-30)
+- Corrected Layer 3C Prompt Files Factory: H1 is now required after the path marker; removed incorrect “no H1” rule.
+- Updated `scripts/validate-prompts.sh` to enforce path marker + H1 + first H2 Slash Command contract.
+- Fixed prompt cards: added path markers, H1 titles, and intro paragraphs to `quick-edit` and `bootstrap-genesis`; corrected path marker and heading guidelines in `prompt-files` card.
+- Validators pass for prompts.

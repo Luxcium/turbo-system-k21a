@@ -3,6 +3,17 @@ description: Fast scoped file edit via Baseline Dev mode.
 mode: edit
 ---
 
+<!-- memory-bank/prompts/quick-edit.prompt.md -->
+
+# Quick Edit
+
+This card activates “Scoped File Edit” under the Baseline Dev chat mode. It instructs the agent
+to make a small, targeted change while honoring existing code style and project guardrails. Keep
+responses concise and additive.
+
+Use this when you have a specific change in a known file/region. The agent assumes edit
+capabilities are available via Baseline Dev tools.
+
 ## Slash Command: /quick-edit - Scoped File Edit
 
 Operational State

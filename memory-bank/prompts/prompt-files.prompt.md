@@ -2,7 +2,7 @@
 description: Author and run *.prompt.md cards under memory-bank/prompts/ with our strict format and guardrails.
 ---
 
-<!-- memory-bank/prompts/prompt-files-guide.prompt.md -->
+<!-- memory-bank/prompts/prompt-files.prompt.md -->
 
 # Prompt Files Guide
 
@@ -58,9 +58,10 @@ Return one complete Markdown file:
   * Then exactly one blank line before the body.
 * Headings:
 
-  * No H1. First header is `## Slash Command: /<stem> - <label>`.
-  * All other headers are `###` or lower. No level skips.
-  * Lines ≤120 characters.
+  * Place the path marker comment immediately after front-matter, followed by exactly one blank line.
+  * Start the body with a single `#` H1 title.
+  * The first H2 must be `## Slash Command: /<stem> - <label>`.
+  * All other headers are `###` or lower. No level skips. Lines ≤120 characters.
 * Links and refs:
 
   * Use only relative links. Prefer referencing our rules:
