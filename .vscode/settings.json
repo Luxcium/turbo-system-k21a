@@ -4,9 +4,16 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-
-  // Connect memory-bank triad for agent context
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "file": "memory-bank/instructions/conventional-commits-must-be-used.instructions.md"
+    },
+    {
+      "text": "Use conventional commit message format."
+    }
+  ],
+  // Connect memory-bank triad for agent context
   "chat.instructionsFilesLocations": {
     "memory-bank/instructions": true
   },
