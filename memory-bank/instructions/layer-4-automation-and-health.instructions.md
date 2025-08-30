@@ -1,5 +1,5 @@
 ---
-description: Layer 4 — Automation, Validation, and Triad Health. Codifies supporting scripts, VS Code tasks, index wiring, and commit-policy instructions beyond Layers 1–3. Excludes the Next.js app under web/ and its generator script.
+description: Layer 4 — Automation, Validation, and Triad Health. Codifies supporting scripts, VS Code tasks, index wiring, commit-policy instructions, additional prompt cards, and workspace chat settings beyond Layers 1–3.
 ---
 
 <!-- memory-bank/instructions/layer-4-automation-and-health.instructions.md -->
@@ -10,9 +10,9 @@ Purpose
 
 - Establish resilient automation around the triad (instructions, chat modes, prompts), wire editor tasks, and encode commit policy guidance so the system remains verifiable and predictable. Apply only additive, idempotent changes beyond Layers 1–3.
 
-Scope & Exclusions
+Scope
 
-- Include: validator scripts, triad health script, VS Code tasks, memory-bank index, commit policy instructions, and slash-command utilities.
+- Include: validator scripts, triad health script, VS Code tasks, memory-bank index, commit policy instructions, additional prompt cards, slash-command utilities, and workspace chat settings.
 
 Operating Principles
 
@@ -20,6 +20,10 @@ Operating Principles
 - Keep logic close to the repository: use shell scripts and VS Code tasks.
 - Use only relative links; no external URLs.
 - Update `memory-bank/activeContext.md` and `memory-bank/progress.md` with concise notes.
+- Always-on Memory Bank discipline: Executors and AI agents MUST honor the
+  [Copilot Memory Bank protocol](./copilot-memory-bank.instructions.md) for every action —
+  read the Memory Bank before acting and write back outcomes immediately after.
+  Treat this as an internal TODO on every task.
 
 Artifacts to Ensure
 
@@ -70,7 +74,7 @@ Artifacts to Ensure
 
 6) Commit Policy Instructions
 
-- Ensure the following instruction files exist under `memory-bank/instructions/` (create minimal stubs if missing):
+- Ensure the following instruction files exist under `memory-bank/instructions/` (create if missing by copying from source context; see Acquisition below):
   - `conventional-commits-must-be-used.instructions.md`
   - `commit-examples.instructions.md`
   - `breaking-changes-commits.instructions.md`
@@ -78,16 +82,66 @@ Artifacts to Ensure
 - Ensure `.vscode/settings.json` references `conventional-commits-must-be-used.instructions.md` in
   `github.copilot.chat.commitMessageGeneration.instructions` without removing existing entries.
 
-7) Prompt Contract Resilience
+7) Copilot Memory-Bank Protocol
+
+- Ensure `memory-bank/instructions/copilot-memory-bank.instructions.md` exists. If missing, copy it from the source context (see Acquisition below). Treat any existing `applyTo` field as immutable.
+- Use and reference it as the authoritative workflow for reading/writing the Memory Bank in every session.
+
+8) Additional Prompt Cards
+
+- Ensure these repository-specific prompt cards exist (copy if missing; see Acquisition below):
+  - `memory-bank/prompts/bootstrap-genesis.prompt.md`
+  - `memory-bank/prompts/prompt-files.prompt.md`
+- Validate them with `scripts/validate-prompts.sh`.
+
+9) Prompt Contract Resilience
 
 - Keep prompt heading rules synchronized with [Layer 3C](./layer-3c-prompt-files-factory.instructions.md):
   - Path marker comment → one blank line → H1 → first H2 is Slash Command.
 - Maintain validator checks so regressions surface in CI/local runs.
+
+10) Workspace Chat Settings (merge-append)
+
+- In `.vscode/settings.json`, append these preferences if they are absent (do not remove or modify unrelated keys):
+  - `"chat.agent.enabled": true`
+  - `"chat.agent.thinkingStyle": "expanded"`
+  - `"chat.math.enabled": true`
+  - `"chatgpt.openOnStartup": true`
+
+11) Prettier Ignore for Editor Stability
+
+- Ensure a root `.prettierignore` exists to prevent auto-formatting from altering
+  files with strict spacing/heading contracts. Include at least these two patterns:
+  - `memory-bank/prompts/*.prompt.md`
+  - `memory-bank/chatmodes/*.chatmode.md`
+- Rationale: Prettier may collapse blank lines or rewrap headings that our prompt/chatmode
+  validators require to remain exact. Keeping these files out of Prettier preserves contract.
+- Merge-append additional project-specific ignores if needed; do not remove existing lines.
+
+Acquisition (Copy From Source Context)
+
+- Goal: When bootstrapping a new project to match this repository’s Layer-4 posture, copy canonical artifacts from the source context into the new project.
+- Source reference in this repository:
+  - `memory-bank/instructions/copilot-memory-bank.instructions.md`
+  - `memory-bank/instructions/conventional-commits-must-be-used.instructions.md`
+  - `memory-bank/instructions/commit-examples.instructions.md`
+  - `memory-bank/instructions/breaking-changes-commits.instructions.md`
+  - `memory-bank/instructions/gitmoji-complete-list.instructions.md`
+  - `scripts/validate-memory-bank.sh`, `scripts/validate-chatmodes.sh`, `scripts/validate-prompts.sh`, `scripts/triad-health.sh`, `scripts/list-slash-commands.sh`
+  - `memory-bank/prompts/bootstrap-genesis.prompt.md`, `memory-bank/prompts/prompt-files.prompt.md`
+  - `.prettierignore`
+- Execution options:
+  1) If operating inside this repository, copy from the relative paths above.
+  2) If operating from a different workspace on the same machine, copy from the absolute local path of this repo if available (e.g., `/projects/incubator/turbo-system-k21a/...`).
+  3) If network access and policy permit, fetch the same files from the canonical remote. Do not embed external URLs in the copied content; record provenance in `memory-bank/progress.md`.
+- Rules:
+  - Preserve file contents exactly, including YAML front-matter. Do not alter `applyTo` fields.
+  - Ensure scripts are executable (`chmod +x`).
+  - After copying, run validators and triad health; update `activeContext.md` and `progress.md` with a brief note and provenance.
 
 Verify & Exit
 
 - All scripts above are executable; validators pass; triad health returns OK.
 - `.vscode/tasks.json` includes the listed tasks.
 - `memory-bank/index.md` includes Layer 4.
-- Memory updated: brief notes added to `activeContext.md` and `progress.md`.
-
+- Memory updated: brief notes added to `activeContext.md` and `progress.md` with provenance when files are copied from a source context.

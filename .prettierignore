@@ -1,2 +1,3 @@
-*.prompt.md
-*.chatmode.md
+# Keep prompt and chatmode cards out of Prettier to preserve strict spacing/heading contracts
+memory-bank/prompts/*.prompt.md
+memory-bank/chatmodes/*.chatmode.md
