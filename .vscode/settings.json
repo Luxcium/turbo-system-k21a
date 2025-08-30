@@ -1,0 +1,23 @@
+{
+  // Layer 2: VS Code workspace settings
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+
+  // Connect memory-bank triad for agent context
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "chat.instructionsFilesLocations": {
+    "memory-bank/instructions": true
+  },
+  "chat.promptFiles": true,
+  "chat.promptFilesLocations": {
+    "memory-bank/prompts": true
+  },
+  "chat.modeFilesLocations": {
+    "memory-bank/chatmodes": true
+  },
+  "chat.agent.enabled": true,
+  "chat.agent.thinkingStyle": "expanded",
+  "chat.math.enabled": true
+}
