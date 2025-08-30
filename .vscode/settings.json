@@ -26,5 +26,6 @@
   },
   "chat.agent.enabled": true,
   "chat.agent.thinkingStyle": "expanded",
-  "chat.math.enabled": true
+  "chat.math.enabled": true,
+  "chatgpt.openOnStartup": true
 }
